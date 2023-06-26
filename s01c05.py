@@ -1,5 +1,3 @@
-from s01c03 import xor_data
-
 def xor_data(xor1, xor2):
     results = ""
 
