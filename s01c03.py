@@ -12,7 +12,6 @@ def xor_data(xor1, xor2):
     for byte1 in set_bin1:
         result += str("{:0>2}".format(hex(int("".join(["0" if (byte1[i] == set_bin2[0][i]) else "1" for i in range(8)]), 2))[2:]))
 
-    print(result)
     return(result)
 
 def main():
