@@ -6,8 +6,6 @@ def pkcs_7pad(data, size):
 
     padding_len = 0
 
-    print(data)
-    print(len(data))
     if len(data) % size != 0:
         padding_len = size - len(data) % size
 
