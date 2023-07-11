@@ -1,6 +1,4 @@
-
-def get_chunk(data, length):
-    return [data[i:i+length] for i in range(0, len(data), length)]
+from ..set01.s01c01 import get_chunk
 
 def pkcs_7pad(data, size):
 
