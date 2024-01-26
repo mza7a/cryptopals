@@ -56,26 +56,28 @@ def xor_data2(xor1, xor2):
 
     result = ""
 
-    for byte1, byte2 in zip(set_bin1, set_bin2):
-        result += str("{:0>2}".format(hex(int("".join(["0" if (byte1[i] == byte2[i]) else "1" for i in range(8)]), 2))[2:]))
+    for byte1 in set_bin1:
+        result += str("{:0>2}".format(hex(int("".join(["0" if (byte1[i] == set_bin2[0][i]) else "1" for i in range(8)]), 2))[2:]))
 
     return(result)
 
 def main():
     #check_hamming_distance()
 
-    with open("s01c06_input") as input_file:
+    with open("temp_input") as input_file:
         byte_data = base64.b64decode(input_file.read())
 
-    ret_key_sizes = sorted(find_key_size(byte_data))
-    key_sizes = list(dict.fromkeys(ret_key_sizes))
-    print(key_sizes)
+    # ret_key_sizes = sorted(find_key_size(byte_data))
+    # key_sizes = list(dict.fromkeys(ret_key_sizes))
+    # print(key_sizes)
+
+    key_sizes = [10, 12, 14, 15, 16, 18, 20, 22, 24, 27, 30, 33, 36, 42, 46, 48, 50, 51, 54, 56, 60, 62, 63, 64, 65, 70, 72, 75, 76, 78, 80, 81, 88, 90, 96, 98]
 
     key_backed = ""
     
     for z in key_sizes:
         chunked_data = get_chunk(byte_data, z)
-        chunked_data[len(chunked_data) - 1] += b'\x00'*(z-len(chunked_data[len(chunked_data) - 1]))
+        # chunked_data[len(chunked_data) - 1] += b'\x00'*(z-len(chunked_data[len(chunked_data) - 1]))
         for y in range(0, z):
             data_block = extract_byte(chunked_data, y)
             for i in range(1, 128):
