@@ -7,7 +7,7 @@ import os
 Oracle Padding Attack
 """
 
-KEY = bytes.fromhex("cfdf714cf219296c1d78044ba1f25c10")
+KEY = os.urandom(16)
 
 def get_encryption(data):
     ciphertext = encrypt(pad(data, 16), KEY)
