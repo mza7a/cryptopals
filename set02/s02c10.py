@@ -3,12 +3,12 @@ from pwn import xor
 import base64
 
 
-def encrypt(plaintext, key):
+def encrypt_ecb(plaintext, key):
     cipher = AES.new(key, AES.MODE_ECB)
     ciphertext = cipher.encrypt(plaintext)
     return ciphertext
 
-def decrypt(ciphertext, key):
+def decrypt_ecb(ciphertext, key):
     plain = AES.new(key, AES.MODE_ECB)
     plaintext = plain.decrypt(ciphertext)
     return plaintext

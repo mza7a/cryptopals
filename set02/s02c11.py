@@ -1,4 +1,4 @@
-from s02c10 import encrypt, encrypt_cbc
+from s02c10 import encrypt_ecb, encrypt_cbc
 from Crypto.Util.Padding import pad
 import random
 import os
@@ -20,7 +20,7 @@ def get_encryption():
     mode = random.choice(["ECB", "CBC"])
 
     if mode == "ECB":
-        ciphertext = encrypt(pad(prefix + flag + postfix, 16), KEY)
+        ciphertext = encrypt_ecb(pad(prefix + flag + postfix, 16), KEY)
     else:
         iv = os.urandom(16)
         ciphertext = encrypt_cbc(KEY, iv, pad(prefix + flag + postfix, 16))

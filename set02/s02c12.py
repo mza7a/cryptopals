@@ -1,4 +1,4 @@
-from s02c10 import encrypt, encrypt_cbc
+from s02c10 import encrypt_ecb, encrypt_cbc
 from Crypto.Util.Padding import pad
 import base64
 import os
@@ -10,7 +10,7 @@ Oracle Padding Attack
 KEY = os.urandom(16)
 
 def get_encryption(data):
-    ciphertext = encrypt(pad(data, 16), KEY)
+    ciphertext = encrypt_ecb(pad(data, 16), KEY)
     return ciphertext.hex()
 
 def perform_oracle_attack(b64_data):
